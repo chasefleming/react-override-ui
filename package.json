@@ -1,0 +1,20 @@
+{
+  "name": "react-bare-bones-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.min.js",
+  "scripts": {
+    "build": "rollup -c -o dist/index.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chase Fleming",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "react": "^16.8.6",
+    "rollup": "^1.11.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-babel-minify": "^8.0.0"
+  }
+}
