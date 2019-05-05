@@ -7,7 +7,7 @@ const config = {
   external: ['react', 'react-dom'],
   output: {
     format: 'umd',
-    name: 'react-bare-bones-ui',
+    name: 'react-override-ui',
     globals: {
       'react': "React",
       'react-dom': 'ReactDOM'

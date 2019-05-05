@@ -1,3 +1,31 @@
-.container {
-  border: 2px dashed blueviolet;
+.menu {
+  display: flex;
+}
+
+.lined {
+  display: flex;
+  border-bottom: 2px solid rgba(34,36,38,.15);
+}
+
+.menuitem {
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  padding: 12px 16px;
+  margin: 0 0 -2px;
+  color: rgba(0,0,0,.87);
+}
+
+.menuitemactive {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #1b1c1d;
+  padding: 12px 16px;
+  margin: 0 0 -2px;
+  color: rgba(0,0,0,.95);
 }
