@@ -1,3 +1,4 @@
+import { Input } from './Input';
 import { Menu } from './Menu';
 
-export default { Menu };
+export default { Input, Menu };

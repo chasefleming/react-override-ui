@@ -1,3 +1,11 @@
+.input {
+  padding: 8px 12px;
+  color: rgba(0,0,0,.87);
+  font-size: 12px;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: 3px;
+}
+
 .menu {
   display: flex;
 }
