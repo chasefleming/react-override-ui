@@ -12,9 +12,9 @@ const DropdownMenu = (props) => {
 
 const DropdownItem = (props) => {
   if (props.icon) {
-    return <div><FontAwesomeIcon icon={props.icon} />{props.text}</div>;
+    return <div className={style.dropdownItemIconSection}><FontAwesomeIcon icon={props.icon} className={style.dropdownItemIcon} />{props.text}</div>;
   } else {
-    return <div>{props.text}</div>;
+    return <div className={style.dropdownItem}>{props.text}</div>;
   }
 };
 
