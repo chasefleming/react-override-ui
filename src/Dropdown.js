@@ -23,10 +23,31 @@ export class Dropdown extends Component {
     super(props);
     this.state = { isOpen: false };
     this.toggleOpen = this.toggleOpen.bind(this);
+
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   static Menu = DropdownMenu;
   static Item = DropdownItem;
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  handleClickOutside(event) {
+    if (this.state.isOpen && this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.toggleOpen();
+    }
+  }
 
   toggleOpen() {
     this.setState({ isOpen: !this.state.isOpen });
@@ -38,7 +59,7 @@ export class Dropdown extends Component {
     );
 
     return (
-      <div className={style.dropdown} onClick={() => this.toggleOpen()}>
+      <div className={style.dropdown} onClick={() => this.toggleOpen()} ref={this.setWrapperRef}>
         <span>{this.props.text}</span>
         <div className={this.state.isOpen ? style.dropdownContentOpen : style.dropdownContent}>
           {childrenWithProps}
