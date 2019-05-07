@@ -4,17 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const DropdownMenu = (props) => {
-  const childrenWithProps = React.Children.map(props.children, child =>
-    React.cloneElement(child, { options: props.options })
-  );
-  return <div className="dropdown-menu">{childrenWithProps}</div>;
+  return <div className="dropdown-menu">{props.children}</div>;
 };
 
 const DropdownItem = (props) => {
-  if (props.icon) {
-    return <div className={style.dropdownItemIconSection}><FontAwesomeIcon icon={props.icon} className={style.dropdownItemIcon} />{props.text}</div>;
+  if (props.options.icon) {
+    return <div className={style.dropdownItemIconSection}><FontAwesomeIcon icon={props.options.icon} className={style.dropdownItemIcon} />{props.options.text}</div>;
   } else {
-    return <div className={style.dropdownItem}>{props.text}</div>;
+    return <div className={style.dropdownItem}>{props.options.text}</div>;
   }
 };
 
@@ -54,15 +51,12 @@ export class Dropdown extends Component {
   }
 
   render () {
-    const childrenWithProps = React.Children.map(this.props.children, child =>
-      React.cloneElement(child, { options: this.props.options })
-    );
-
     return (
-      <div className={style.dropdown} onClick={() => this.toggleOpen()} ref={this.setWrapperRef}>
-        <span>{this.props.text}</span>
+      <div className={style.dropdown} style={this.props.options.override} onClick={() => this.toggleOpen()} ref={this.setWrapperRef}>
+        { this.props.options.text && <span>{this.props.options.text}</span> }
+        { this.props.options.icon && <FontAwesomeIcon icon={this.props.options.icon} /> }
         <div className={this.state.isOpen ? style.dropdownContentOpen : style.dropdownContent}>
-          {childrenWithProps}
+          {this.props.children}
         </div>
       </div>
     );
