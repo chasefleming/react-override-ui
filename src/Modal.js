@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './style.css';
+import style from './style.less';
 
 const ModalContent = (props) => {
   const overrideStyle = props.options && props.options.override ? props.options.override : null;
