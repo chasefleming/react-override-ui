@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import style from './style.less';
 
 const MenuItem = (props) => {
-  const isActive = props.isActive === 'true';
-  const overrideStyle = props.options && props.options.override ? props.options.override : null;
-  const overrideActiveStyle = props.options && props.options.activeOverride ? props.options.activeOverride : null;
   const classes = `${props.isActive === 'true' ? style.menuitemactive : style.menuitem}`;
-  const overrideToUse = isActive ? overrideActiveStyle : overrideStyle;
-  return <div className={classes} style={overrideToUse}>{props.name}</div>;
+  const override = props.isActive ? props.options.override.isActive : null;
+  return <div className={classes} style={override}>{props.options.text}</div>;
 }
 
 export class Menu extends Component {
@@ -28,7 +25,7 @@ export class Menu extends Component {
 
     return (
       <div className={classes.join(' ')}>
-        {childrenWithProps}
+        {this.props.children}
       </div>
     );
   }
