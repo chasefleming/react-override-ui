@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import style from './style.less';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const DropdownMenu = (props) => {
@@ -10,7 +11,11 @@ const DropdownMenu = (props) => {
 };
 
 const DropdownItem = (props) => {
-  return <div>{props.text}</div>;
+  if (props.icon) {
+    return <div><FontAwesomeIcon icon={props.icon} />{props.text}</div>;
+  } else {
+    return <div>{props.text}</div>;
+  }
 };
 
 export class Dropdown extends Component {
