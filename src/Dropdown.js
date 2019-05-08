@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './style.less';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const DropdownMenu = (props) => {
@@ -8,7 +8,7 @@ const DropdownMenu = (props) => {
 };
 
 const DropdownItem = (props) => {
-  if (props.options.type === 'iconOnly') {
+  if (props.options.icon) {
     return <div className={style.dropdownItemIconSection}><FontAwesomeIcon icon={props.options.icon} className={style.dropdownItemIcon} />{props.options.text}</div>;
   } else {
     return <div className={style.dropdownItem}>{props.options.text}</div>;
@@ -51,14 +51,26 @@ export class Dropdown extends Component {
   }
 
   render () {
+    console.log('dropdown props', this.props);
+    let dropdownContainerContent;
+    let dropdownStyle = style.dropdown;
+
     if (this.props.options.type === 'iconOnly') {
+      dropdownStyle = style.dropdownIconOnly
       this.props.options.override = { 'cursor': 'default', ...this.props.options.override };
-    };
+      dropdownContainerContent = <span onClick={() => this.toggleOpen()} style={{cursor : 'pointer'}}><FontAwesomeIcon icon={this.props.options.icon} /></span>;
+    } else {
+      dropdownContainerContent = <span>{this.props.options.text} <FontAwesomeIcon icon='sort-down' className="icon" /></span>;
+    }
+
+    // Add class if one exists
+    if (this.props.class) {
+      dropdownStyle = `${dropdownStyle} ${this.props.class}`;
+    }
 
     return (
-      <div className={style.dropdown} style={this.props.options.override} onClick={this.props.options.type !== 'iconOnly'? () => this.toggleOpen() : null} ref={this.setWrapperRef}>
-        { this.props.options.type !== 'iconOnly' && <span>{this.props.options.text}</span> }
-        { this.props.options.type === 'iconOnly' && <span onClick={() => this.toggleOpen()} style={{cursor : 'pointer'}}><FontAwesomeIcon icon={this.props.options.icon} /></span>}
+      <div className={dropdownStyle} style={this.props.options.override} onClick={this.props.options.type !== 'iconOnly'? () => this.toggleOpen() : null} ref={this.setWrapperRef}>
+        { dropdownContainerContent }
         <div className={this.state.isOpen ? style.dropdownContentOpen : style.dropdownContent}>
           {this.props.children}
         </div>
