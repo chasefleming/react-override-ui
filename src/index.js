@@ -9,4 +9,4 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab, faHeart)
 
-export default { Input, Dropdown, Menu, Modal };
+export default { Dropdown, Menu };
