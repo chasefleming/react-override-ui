@@ -40,7 +40,7 @@ export class Dropdown extends Component {
     this.wrapperRef = node;
   }
 
-  handleClickOutside(event) {
+  handleClickOutside(event) { // check for click outside dropdown to close
     if (this.state.isOpen && this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.toggleOpen();
     }
