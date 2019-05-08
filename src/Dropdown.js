@@ -8,7 +8,7 @@ const DropdownMenu = (props) => {
 };
 
 const DropdownItem = (props) => {
-  if (props.options.icon) {
+  if (props.options.type === 'iconOnly') {
     return <div className={style.dropdownItemIconSection}><FontAwesomeIcon icon={props.options.icon} className={style.dropdownItemIcon} />{props.options.text}</div>;
   } else {
     return <div className={style.dropdownItem}>{props.options.text}</div>;
@@ -51,10 +51,14 @@ export class Dropdown extends Component {
   }
 
   render () {
+    if (this.props.options.type === 'iconOnly') {
+      this.props.options.override = { 'cursor': 'default', ...this.props.options.override };
+    };
+
     return (
-      <div className={style.dropdown} style={this.props.options.override} onClick={() => this.toggleOpen()} ref={this.setWrapperRef}>
-        { this.props.options.text && <span>{this.props.options.text}</span> }
-        { this.props.options.icon && <FontAwesomeIcon icon={this.props.options.icon} /> }
+      <div className={style.dropdown} style={this.props.options.override} onClick={this.props.options.type !== 'iconOnly'? () => this.toggleOpen() : null} ref={this.setWrapperRef}>
+        { this.props.options.type !== 'iconOnly' && <span>{this.props.options.text}</span> }
+        { this.props.options.type === 'iconOnly' && <span onClick={() => this.toggleOpen()} style={{cursor : 'pointer'}}><FontAwesomeIcon icon={this.props.options.icon} /></span>}
         <div className={this.state.isOpen ? style.dropdownContentOpen : style.dropdownContent}>
           {this.props.children}
         </div>
