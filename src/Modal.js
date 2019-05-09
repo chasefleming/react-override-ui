@@ -50,14 +50,10 @@ export class Modal extends Component {
   render () {
     const childrenWithProps = React.Children.map(this.props.children, child =>
       React.cloneElement(child, { options: this.props.options })
-    );
-
-    let displaySetting = {
-      display: (this.props.isOpen === 'true' || String(this.props.isOpen) === 'true') ? 'flex' : 'none'
-    };
+    )
 
     return (
-      <div className={style.modal} style={displaySetting}>
+      <div className={`${style.modal} ${(this.props.isOpen === 'true' || String(this.props.isOpen) === 'true') ? style.modalActive : null}`}>
         {childrenWithProps}
       </div>
     );

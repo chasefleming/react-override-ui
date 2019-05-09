@@ -129,13 +129,21 @@
   overflow: auto;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+
+.modalActive {
+  opacity: 1;
+  visibility: visible;
 }
 
 .modalContent {
   background-color: #fefefe;
   padding: 20px;
-  border: 1px solid #888;
   min-width: 100px;
   max-width: 80%;
   min-height: 100px;
+  border-radius: 3px;
 }
