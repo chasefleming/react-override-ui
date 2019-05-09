@@ -16,7 +16,8 @@ import {
   faShareAlt,
   faCloudDownloadAlt,
   faCog,
-  faChartLine 
+  faChartLine,
+  faQuestionCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -30,7 +31,8 @@ library.add(
   faShareAlt,
   faCloudDownloadAlt,
   faCog,
-  faChartLine
+  faChartLine,
+  faQuestionCircle
 )
 
 export default { Icon, Dropdown, Menu, Modal };
