@@ -9,9 +9,13 @@ const DropdownMenu = (props) => {
 
 const DropdownItem = (props) => {
   if (props.options.icon) {
-    return <div className={style.dropdownItemIconSection}><FontAwesomeIcon icon={props.options.icon} className={style.dropdownItemIcon} />{props.options.text}</div>;
+    return (
+      <div className={style.dropdownItemIconSection} onClick={props.onClick}>
+        <FontAwesomeIcon icon={props.options.icon} className={style.dropdownItemIcon} />{props.options.text}
+      </div>
+    );
   } else {
-    return <div className={style.dropdownItem}>{props.options.text}</div>;
+    return <div className={style.dropdownItem} onClick={props.onClick}>{props.options.text}</div>;
   }
 };
 
@@ -51,7 +55,6 @@ export class Dropdown extends Component {
   }
 
   render () {
-    console.log('dropdown props', this.props);
     let dropdownContainerContent;
     let dropdownStyle = style.dropdown;
 

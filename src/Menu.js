@@ -4,7 +4,7 @@ import style from './style.less';
 const MenuItem = (props) => {
   const classes = `${props.isActive === 'true' ? style.menuitemactive : style.menuitem}`;
   const override = props.isActive ? props.options.override.isActive : null;
-  return <div className={classes} style={override}>{props.options.text}</div>;
+  return <div className={classes} style={override} onClick={props.onClick}>{props.options.text}</div>;
 }
 
 export class Menu extends Component {
