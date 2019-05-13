@@ -44,7 +44,7 @@ import { Dropdown } from "react-override-ui";
 const dropdownItems = [
   {
     text: "Link",
-    icon: "link",
+    icon: "link", // Icons not necessary, but are supported as menu items
     clickHandler: () => // do something
   },
   {
