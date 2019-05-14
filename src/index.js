@@ -37,4 +37,4 @@ library.add(
   faFileInvoiceDollar
 )
 
-export default { Icon, Dropdown, Menu, Modal };
+export default { Icon, Input, Dropdown, Menu, Modal };

@@ -7,7 +7,7 @@ export class Input extends Component {
     const overrideStyle = this.props.options && this.props.options.override ? this.props.options.override : null;
 
     return (
-      <input type="text" placeholder={placeholder} className={style.input} style={overrideStyle} />
+      <input type="text" placeholder={placeholder} defaultValue={this.props.defaultValue} value={this.props.value} onChange={this.props.onChange} className={style.input} style={overrideStyle} />
     );
   }
 }
