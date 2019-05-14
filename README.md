@@ -83,3 +83,11 @@ const menuOptions = {
   ))}
 </Menu>
 ```
+
+## Card Example
+```
+<Card>
+  <Card.Header>Card Header</Card.Header>
+  <Card.Content>Card Content</Card.Content>
+</Card>
+```
