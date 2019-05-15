@@ -65,6 +65,8 @@ const dropdownItems = [
 
 ## Menu Example
 ```
+import { Menu } from "react-override-ui";
+
 const menuOptions = {
   type: "lined",
   override: {
@@ -86,6 +88,8 @@ const menuOptions = {
 
 ## Card Example
 ```
+import { Card } from "react-override-ui";
+
 <Card>
   <Card.Header>Card Header</Card.Header>
   <Card.Content>Card Content</Card.Content>
