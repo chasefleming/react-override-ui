@@ -1,3 +1,4 @@
+import { Card } from './Card';
 import { Icon } from './Icon';
 import { Input } from './Input';
 import { Dropdown } from './Dropdown';
@@ -37,4 +38,4 @@ library.add(
   faFileInvoiceDollar
 )
 
-export default { Icon, Dropdown, Menu, Modal };
+export default { Card, Icon, Input, Dropdown, Menu, Modal };
