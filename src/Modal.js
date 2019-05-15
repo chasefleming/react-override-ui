@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
 import style from './style.less';
 
-const ModalContent = (props) => {
-  const overrideStyle = props.options && props.options.override ? props.options.override : null;
-  return <div id="modalContent" className={style.modalContent} style={overrideStyle}>{props.children}</div>;
-}
-
-export class Modal extends Component {
+export class ModalContent extends Component {
   constructor(props) {
-    super(props)
-    this.state = { isOpen: props.isOpen };
-    this.closeModal = this.closeModal.bind(this);
-
+    super(props);
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
-
-  static Content = ModalContent;
-
+  
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
   }
@@ -31,12 +21,27 @@ export class Modal extends Component {
   }
 
   handleClickOutside(event) { // check for click outside dropdown to close
-    if (event.target && event.target.id === 'modalContent') {
-      return;
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.props.closeModal();
     }
-
-    this.closeModal();
   }
+
+  render() {
+    const overrideStyle = this.props.options && this.props.options.override ? this.props.options.override : null;
+    return (
+      <div ref={this.setWrapperRef} className={style.modalContent} style={overrideStyle}>{this.props.children}</div>
+    );
+  }
+}
+
+export class Modal extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { isOpen: props.isOpen };
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  static Content = ModalContent;
 
   closeModal() {
     if (this.props.onClose) {
@@ -49,7 +54,7 @@ export class Modal extends Component {
   
   render () {
     const childrenWithProps = React.Children.map(this.props.children, child =>
-      React.cloneElement(child, { options: this.props.options })
+      React.cloneElement(child, { options: this.props.options, closeModal: this.closeModal })
     )
 
     return (
