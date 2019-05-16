@@ -14,14 +14,10 @@ export class Menu extends Component {
     let classes = [];
     
     if (this.props.options && this.props.options.type) {
-      classes.push(style[this.props.options.type])
+      classes.push(style[this.props.options.type]);
     } else {
-      classes.push(style.menu)
+      classes.push(style.menu);
     }
-
-    const childrenWithProps = React.Children.map(this.props.children, child =>
-      React.cloneElement(child, { options: this.props.options })
-    );
 
     return (
       <div className={classes.join(' ')}>
