@@ -1,13 +1,11 @@
 import babel from 'rollup-plugin-babel';
-import minify from 'rollup-plugin-babel-minify';
 import postcss from 'rollup-plugin-postcss';
-
 import resolve from 'rollup-plugin-node-resolve';
-import commonJS from 'rollup-plugin-commonjs';
+import commonjs from 'rollup-plugin-commonjs';
+import external from 'rollup-plugin-peer-deps-external'
 
 const config = {
   input: 'src/index.js',
-  external: ['react', 'react-dom'],
   output: {
     format: 'umd',
     name: 'react-override-ui',
@@ -17,15 +15,16 @@ const config = {
     }
   },
   plugins: [
+    external(),
     postcss({
       modules: true
     }),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      plugins: [ 'external-helpers' ]
     }),
     resolve(),
-    commonJS(),
-    minify()
+    commonjs()
   ]
 };
 

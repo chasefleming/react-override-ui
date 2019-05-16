@@ -52,10 +52,10 @@
   font-weight: 400;
   padding: 10px 16px;
   cursor: pointer;
+}
 
-  &:hover {
-    background: #f2f2f2;
-  }
+.dropdownItem:hover {
+  background: #f2f2f2;
 }
 
 .dropdownItemIconSection {
@@ -65,10 +65,10 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+}
 
-  &:hover {
-    background: #f2f2f2;
-  }
+.dropdownItemIconSection:hover {
+  background: #f2f2f2;
 }
 
 .dropdownItemIcon {

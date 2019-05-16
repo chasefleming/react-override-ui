@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './style.less';
+import style from './style.css';
 
 const MenuItem = (props) => {
   const classes = `${props.isActive === 'true' ? style.menuitemactive : style.menuitem}`;

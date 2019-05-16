@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './style.less';
+import style from './style.css';
 
 const CardHeader = (props) => {
   let classes = [style.cardHeader];
