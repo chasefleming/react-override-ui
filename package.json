@@ -4,8 +4,7 @@
   "description": "",
   "main": "dist/index.min.js",
   "scripts": {
-    "build": "rollup -c -o dist/index.min.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c -o dist/index.min.js"
   },
   "author": "Chase Fleming",
   "license": "ISC",
